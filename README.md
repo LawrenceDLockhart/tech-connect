@@ -1,7 +1,6 @@
-# Custom project from Hilla
+# Tech Connect
 
-This project can be used as a starting point to create your own Hilla application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+Tech Connect is a web application designed to connect tech learners with tech professionals for purposes of mentorship, learning, and accountability.  It’s made for the Code Connector organization but can be suited for any organization’s purposes
 
 ## Running the application
 
@@ -44,7 +43,7 @@ source directory, contains the server-side Java views</td></tr>
   <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<code>Application.java</code></td><td>Server entry-point</td></tr>
 </table>
 
-## Useful links
+## Useful links regarding Hilla implementation and details
 
 - Read the documentation at [hilla.dev/docs](https://hilla.dev/docs/).
 - Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/hilla) or join our [Discord channel](https://discord.gg/MYFq5RTbBn).
