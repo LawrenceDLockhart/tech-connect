@@ -26,7 +26,7 @@ export default function MenuOnLeftLayout() {
   return (
     <AppLayout className="block h-full" primarySection="drawer">
       <header slot="drawer">
-        <h1 className="text-l m-0">My App</h1>
+        <h1 className="text-l m-0">Tech Connecrt</h1>
       </header>
       <Scroller slot="drawer" scroll-direction="vertical">
         <nav>

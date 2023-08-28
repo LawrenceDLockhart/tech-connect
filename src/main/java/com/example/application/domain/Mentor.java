@@ -8,6 +8,7 @@ public class Mentor extends Participant {
     }
     public void connect() {
         if (!connected) {
+
             //find a mentor
             //based on technologies chosen
             //display the mentor's name and email'

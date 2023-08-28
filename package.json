@@ -82,7 +82,8 @@
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
     "@hilla/generator-typescript-plugin-backbone": "$@hilla/generator-typescript-plugin-backbone",
     "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles",
-    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli"
+    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli",
+    "bootstrap": "$bootstrap"
   },
   "vaadin": {
     "dependencies": {
@@ -129,6 +130,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "6be2e8cabe757f8567989ce223bf61d1360e4263ff46f42eb51547ecbc963f77"
+    "hash": "b4e40225d76ba230a3d68ca5e36e0668a11ac8e9e78c78985935c313179bc765"
   }
 }
