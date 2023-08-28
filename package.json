@@ -25,6 +25,7 @@
     "@vaadin/vaadin-lumo-styles": "24.1.5",
     "@vaadin/vaadin-material-styles": "24.1.5",
     "@vaadin/vaadin-themable-mixin": "24.1.5",
+    "bootstrap": "^5.3.1",
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
     "lit": "2.7.6",
