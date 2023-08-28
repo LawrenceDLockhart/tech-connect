@@ -4,7 +4,8 @@ public class Participant {
     String name;
     Integer id;
     String email;
-    Boolean connected;
+    public Boolean connected;
+    String[] technologies = {"javascript", "php", "python", "c#", "c++", "go", "ruby"};
 
     public Participant() {
     }
