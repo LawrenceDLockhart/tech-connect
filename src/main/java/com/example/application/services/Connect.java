@@ -21,5 +21,7 @@ public class Connect {
          }
     }
 
-    private void updateConnection()
+    private void updateConnection() {
+        
+    }
 }
