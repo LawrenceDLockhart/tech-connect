@@ -1,11 +1,36 @@
 package com.example.application.domain;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
 
+@Entity
 public class Participant {
     String name;
-    Integer id;
+    @Id
+    Long id;
+
+    public Boolean getMentor() {
+        return mentor;
+    }
+
+    public void setMentor(Boolean mentor) {
+        this.mentor = mentor;
+    }
+
+    public Technology getSelectedTechnology() {
+        return selectedTechnology;
+    }
+
+    public void setSelectedTechnology(Technology selectedTechnology) {
+        this.selectedTechnology = selectedTechnology;
+    }
+
     String email;
+    public Boolean mentor;
     public Boolean connected;
-    String[] technologies = {"javascript", "php", "python", "c#", "c++", "go", "ruby"};
+    @Enumerated(EnumType.STRING)
+    private Technology selectedTechnology;
 
     public Participant() {
     }
