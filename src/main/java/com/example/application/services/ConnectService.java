@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class Connect {
+public class ConnectService {
 
     private ParticipantRepository participantRepository;
 
-    private void updateTechnoglogy(Long id, Technology technology) {
+    public void updateTechnology(Long id, Technology technology) {
          Optional<Participant> optionalParticipant = participantRepository.findById(id);
          if (optionalParticipant.isPresent()) {
              Participant participant = optionalParticipant.get();
@@ -21,7 +21,7 @@ public class Connect {
          }
     }
 
-    private void updateConnection() {
-        
+    private void updateConnection(Long id) {
+        System.out.println("Connection completed");
     }
 }

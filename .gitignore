@@ -5,3 +5,4 @@ node_modules/
 frontend/generated/
 vite.generated.ts
 .idea
+.idea/workspace.xml
