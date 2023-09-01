@@ -2,12 +2,13 @@ package com.example.application.endpoints;
 
 import com.example.application.domain.Participant;
 import com.example.application.repositories.ParticipantRepository;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
-import dev.hilla.Nonnull;
 
 import java.util.List;
 
 @Endpoint
+@AnonymousAllowed
 public class ParticipantEndpoint {
     private ParticipantRepository participantRepository;
 
@@ -15,7 +16,7 @@ public class ParticipantEndpoint {
         this.participantRepository = participantRepository;
     }
 
-    public @Nonnull List<@Nonnull Participant> findAll() {
+    public List<Participant> findAll() {
         return participantRepository.findAll();
     }
 

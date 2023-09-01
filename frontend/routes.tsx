@@ -2,7 +2,7 @@ import MainLayout from 'Frontend/views/MainLayout.js';
 import { lazy } from 'react';
 import { createBrowserRouter, IndexRouteObject, NonIndexRouteObject, useMatches } from 'react-router-dom';
 
-const TodoView = lazy(async () => import('Frontend/views/todo/TodoView.js'));
+const TodoView = lazy(async () => import('Frontend/views/ParticipantView'));
 export type MenuProps = Readonly<{
   icon?: string;
   title?: string;

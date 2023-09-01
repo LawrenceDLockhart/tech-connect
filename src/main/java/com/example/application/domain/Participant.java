@@ -1,48 +1,47 @@
 package com.example.application.domain;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Enumerated;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"mentor"})
 public class Participant {
-    String name;
+
     @Id
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Boolean getMentor() {
-        return mentor;
-    }
-
-    public void setMentor(Boolean mentor) {
-        this.mentor = mentor;
-    }
-
-    public Technology getSelectedTechnology() {
-        return selectedTechnology;
-    }
-
-    public void setSelectedTechnology(Technology selectedTechnology) {
-        this.selectedTechnology = selectedTechnology;
-    }
-
-    String email;
-    public Boolean mentor;
-    public Boolean connected;
+    private String name;
+    private String email;
     @Enumerated(EnumType.STRING)
-    private Technology selectedTechnology;
+    private Technology technology;
+
+    @ManyToOne // Many mentees can have one mentor
+    @JoinColumn(name = "mentor_id")
+    private Participant mentor;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
+    private List<Participant> mentees;
 
     public Participant() {
     }
 
-    public String getName() {
-        return name;
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
 
-    public Participant(String name, String email, Boolean connected) {
-        this.name = name;
-        this.email = email;
-        this.connected = connected;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
@@ -57,14 +56,33 @@ public class Participant {
         this.email = email;
     }
 
-    public Boolean getConnected() {
-        return connected;
+    public Participant getMentor() {
+        return mentor;
     }
 
-    public void setConnected(Boolean connected) {
-        this.connected = connected;
+    public void setMentor(Participant mentor) {
+        this.mentor = mentor;
     }
 
+    public List<Participant> getMentees() {
+        return mentees;
+    }
 
+    public void setMentees(List<Participant> mentees) {
+        this.mentees = mentees;
+    }
 
+    public Technology getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(Technology technology) {
+        this.technology = technology;
+    }
+
+    public enum Technology {
+        PYTHON,
+        JAVA,
+        JAVASCRIPT
+    }
 }
