@@ -13,9 +13,5 @@ C
 frontend/routes.tsx,5/4/54146aa5ae209f08c3b2a89e318e175c564a32ba
 @
 frontend/App.tsx,9/e/9e478f98f33a0befe65add8bb49d793f240cf806
-R
-"frontend/views/ParticipantView.tsx,6/5/65b6c72a90161fdeebd66329957f1982250d816e
-v
-Fsrc/main/java/com/example/application/services/ParticipantService.java,8/0/8042dd82b92bc79a8baa53c6ab5cb005a48cbb6b
-F
-application.properties,2/f/2f692484526a88bd040e1ec9f8c211bca74f6755
+}
+Msrc/main/java/com/example/application/repositories/ParticipantRepository.java,8/4/8413b01176d182d8042d77a50379c86c0b133218

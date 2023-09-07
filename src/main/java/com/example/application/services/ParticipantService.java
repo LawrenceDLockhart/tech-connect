@@ -1,59 +1,37 @@
 package com.example.application.services;
 
 import com.example.application.domain.Participant;
+import com.example.application.domain.ParticipantDTO;
 import com.example.application.repositories.ParticipantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+
 
 @Service
+@Repository
 public class ParticipantService {
 
-    @Autowired
-    private ParticipantRepository participantRepository;
+    private ParticipantRepository repository;
+    public ParticipantService(ParticipantRepository repository) {
+        this.repository = repository;
+    }
+    private ParticipantDTO participantDTO;
 
-    // Service method to update technology choice for a participant
-    public void updateTechnology(Long participantId, Participant.Technology technology) {
-        Optional<Participant> participantOptional = participantRepository.findById(participantId);
-        if (participantOptional.isPresent()) {
-            Participant participant = participantOptional.get();
-            participant.setTechnology(technology);
-            participantRepository.save(participant);
-        } else {
-            // Handle participant not found
-        }
+    public ParticipantDTO convertToDTO(Participant participant){
+        ParticipantDTO dto = new ParticipantDTO();
+        dto.setId(participant.getId());
+        dto.setName(participant.getName());
+        dto.setEmail(participant.getEmail());
+        return dto;
     }
 
-    // Service method to connect a mentor to a mentee
-    @Transactional
-    public void connectMentorAndMentee(Long mentorId) {
-        Optional<Participant> mentorOptional = participantRepository.findById(mentorId);
-        if (mentorOptional.isPresent()) {
-            Participant mentor = mentorOptional.get();
-
-            List<Participant> potentialMentees = participantRepository.findAllByTechnologyAndMentorIsNull(mentor.getTechnology());
-            if (!potentialMentees.isEmpty()) {
-                Participant mentee = potentialMentees.get(0);
-                mentee.setMentor(mentor);
-
-                if (mentor.getMentees() == null) {
-                    mentor.setMentees(new ArrayList<>());
-                }
-
-                mentor.getMentees().add(mentee);
-
-                participantRepository.save(mentee);
-                participantRepository.save(mentor);
-            } else {
-                // Handle no available mentees
-            }
-        } else {
-            // Handle mentor not found
-        }
+    public List<ParticipantDTO> findAll() {
+        List<Participant> participants = repository.findAll();
+        return participants.stream().map(this::convertToDTO).toList();
     }
+
 }
 

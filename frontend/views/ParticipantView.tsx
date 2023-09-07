@@ -22,14 +22,17 @@ const ParticipantView: React.FC = () => {
     const mentees = participants.filter((participant) => participant.mentorId !== null);
 
     return (
-        <div className="App">
+        <div className="App mx-auto">
             <h1>Mentor and Mentee List</h1>
 
-            <div>
-                <h2>Mentors</h2>
+            <div className="d-flex" >
+
                 <ul>
+
                     {mentors.map((mentor) => (
+
                         <li key={mentor.id}>
+                            <h2>Mentors</h2>
                             {mentor.name} ({mentor.email}) - Technology: {mentor.technology}
                         </li>
                     ))}
@@ -37,10 +40,12 @@ const ParticipantView: React.FC = () => {
             </div>
 
             <div>
-                <h2>Mentees</h2>
+
                 <ul>
+
                     {mentees.map((mentee) => (
                         <li key={mentee.id}>
+                            <h2>Mentees</h2>
                             {mentee.name} ({mentee.email}) - Technology: {mentee.technology}
                         </li>
                     ))}

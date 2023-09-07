@@ -5,23 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34c453fc-f690-4b73-8d95-215b2a3e1bf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/views/ParticipantView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/endpoints/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/views/Participant.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/application/domain/ParticipantDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ParticipantServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/tech-connect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tech-connect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/MainLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/todo/TodoView.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/controllers/ParticipantController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/ParticipantView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/ParticipantView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/domain/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/domain/Participant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/domain/Technology.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/endpoints/ParticipantEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/endpoints/ParticipantEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/repositories/ParticipantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/repositories/ParticipantRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/services/ConnectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/services/ParticipantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/application/services/ParticipantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/application/services/ParticipantService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +69,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "serialize",
     "last_opened_file_path": "/Users/lawrencelockhart/Documents/Coding/VAADIN/tech-connect",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.preferences.folding",
     "spring.configuration.checksum": "8644d7c64fc431e7bb7ccf04697e6e95",
     "ts.external.directory.path": "/Users/lawrencelockhart/Documents/Coding/VAADIN/tech-connect/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -131,6 +127,11 @@
       <workItem from="1693238946335" duration="20076000" />
       <workItem from="1693424609617" duration="48812000" />
       <workItem from="1693574981045" duration="14529000" />
+      <workItem from="1693955506990" duration="27000" />
+      <workItem from="1694018273744" duration="1344000" />
+      <workItem from="1694041988781" duration="1864000" />
+      <workItem from="1694044437407" duration="635000" />
+      <workItem from="1694084987191" duration="6328000" />
     </task>
     <servers />
   </component>

@@ -1,11 +1,12 @@
 import { AppLayout } from '@hilla/react-components/AppLayout.js';
 import React, { useEffect, useState } from 'react';
 import { ParticipantEndpoint } from 'Frontend/generated/endpoints';
-import Participant from 'Frontend/generated/com/example/application/domain/Participant';
+import ParticipantDTO from 'Frontend/generated/com/example/application/domain/ParticipantDTO'
+import ParticipantView from "Frontend/views/ParticipantView";
 
 export default function MainLayout() {
-    const [data, setData] = useState<Participant[]>([]);
 
+    const [data, setData] = useState<ParticipantDTO[]>([]);
     useEffect(() => {
         fetchData();
     }, []);
@@ -21,10 +22,10 @@ export default function MainLayout() {
     }
   return (
       <div>
-          {/*<ParticipantView />*/}
+          <ParticipantView />
           <AppLayout className="block h-full" primarySection="drawer">
                 <h1 className="text-l m-0">Tech Connect</h1>
-              {data.map((item: Participant) => (
+              {data.map((item: ParticipantDTO) => (
                   <div key={item.id}>
                       <h2>{item.name}</h2>
                       <p>{item.email}</p>
