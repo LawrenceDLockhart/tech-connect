@@ -25,7 +25,7 @@ export default function MainLayout() {
           <ParticipantView />
           <AppLayout className="block h-full" primarySection="drawer">
                 <h1 className="text-l m-0">Tech Connect</h1>
-              {data.map((item: ParticipantDTO) => (
+              {data.map((item) => (
                   <div key={item.id}>
                       <h2>{item.name}</h2>
                       <p>{item.email}</p>
