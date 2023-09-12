@@ -3,7 +3,6 @@ package com.example.application.services;
 import com.example.application.domain.Participant;
 import com.example.application.domain.ParticipantDTO;
 import com.example.application.repositories.ParticipantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import java.util.List;
