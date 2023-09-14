@@ -30,8 +30,6 @@ public class Participant {
         this.email = email;
         this.technology = technology;
     }
-    public Participant(String doe, String python) {
-    }
     // Getters and Setters
     public Long getId() {
         return id;
