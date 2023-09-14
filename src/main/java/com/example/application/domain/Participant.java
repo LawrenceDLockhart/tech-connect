@@ -18,6 +18,9 @@ public class Participant {
     private String email;
     @Enumerated(EnumType.STRING)
     private Technology technology;
+    @ManyToOne // Many mentees can have one mentor
+    @JoinColumn(name = "mentor_id")
+    private Participant mentor;
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
     private List<Participant> mentees;
@@ -83,7 +86,5 @@ public class Participant {
         JAVA,
         JAVASCRIPT
     }
-    @ManyToOne // Many mentees can have one mentor
-    @JoinColumn(name = "mentor_id")
-    private Participant mentor;
+
 }
