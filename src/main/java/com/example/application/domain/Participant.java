@@ -1,7 +1,5 @@
 package com.example.application.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -14,8 +12,9 @@ public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String userName;
     private String email;
+    private String password;
     @Enumerated(EnumType.STRING)
     private Technology technology;
     @ManyToOne // Many mentees can have one mentor
@@ -30,6 +29,11 @@ public class Participant {
         this.email = email;
         this.technology = technology;
     }
+    public Participant(String userName, String password, String email) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
     // Getters and Setters
     public Long getId() {
         return id;
@@ -39,12 +43,12 @@ public class Participant {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
@@ -77,6 +81,14 @@ public class Participant {
 
     public void setTechnology(Technology technology) {
         this.technology = technology;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public enum Technology {

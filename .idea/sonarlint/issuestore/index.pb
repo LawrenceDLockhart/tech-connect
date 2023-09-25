@@ -37,3 +37,11 @@ m
 =src/main/java/com/example/application/domain/Participant.java,4/5/454d719d63a263179f3c0bc7f21c99bd86d72f8e
 v
 Fsrc/main/java/com/example/application/services/ParticipantService.java,8/0/8042dd82b92bc79a8baa53c6ab5cb005a48cbb6b
+H
+frontend/util/routing.ts,a/7/a780e7b8c64540124c25812a4138c48443b9eb13
+L
+frontend/views/LoginView.tsx,0/f/0faf50eb4fdd2174e2a2b89f2c4797de55ff3e5c
+}
+Msrc/main/java/com/example/application/services/ParticipantDetailsService.java,7/2/723b9d29d7c035f9e17a9db23967a9f4699db3c1
+p
+@src/main/java/com/example/application/SecurityConfiguration.java,e/6/e6ef55b1d029761edbd014ea52d5293ba9cbaad3

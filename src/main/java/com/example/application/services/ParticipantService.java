@@ -3,6 +3,7 @@ package com.example.application.services;
 import com.example.application.domain.Participant;
 import com.example.application.domain.ParticipantDTO;
 import com.example.application.repositories.ParticipantRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +14,17 @@ import java.util.Optional;
 @Service
 public class ParticipantService {
 
+    private PasswordEncoder passwordEncoder;
     private ParticipantRepository repository;
-    public ParticipantService(ParticipantRepository repository) {
+    public ParticipantService(ParticipantRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
+    public void createParticipant(Participant participant) {
+        participant.setPassword(passwordEncoder.encode(participant.getPassword()));
+        repository.save(participant);
+    }
     public void updateTechnology(Long participantId, Participant.Technology technology) {
         Optional<Participant> participantOptional = repository.findById(participantId);
         if (participantOptional.isPresent()) {
@@ -29,14 +36,12 @@ public class ParticipantService {
             // change above to display in browser
         }
     }
-
     // Service method to connect a mentor to a mentee
     @Transactional
     public void connectMentorAndMentee(Long mentorId) {
         Optional<Participant> mentorOptional = repository.findById(mentorId);
         if (mentorOptional.isPresent()) {
             Participant mentor = mentorOptional.get();
-
             List<Participant> potentialMentees = repository.findAllByTechnologyAndMentorIsNull(mentor.getTechnology());
             if (!potentialMentees.isEmpty()) {
                 Participant mentee = potentialMentees.get(0);
@@ -60,7 +65,7 @@ public class ParticipantService {
     public ParticipantDTO convertToDTO(Participant participant){
         ParticipantDTO dto = new ParticipantDTO();
         dto.setId(participant.getId());
-        dto.setName(participant.getName());
+        dto.setUserName(participant.getUserName());
         dto.setEmail(participant.getEmail());
         return dto;
     }

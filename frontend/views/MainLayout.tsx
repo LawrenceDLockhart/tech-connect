@@ -1,54 +1,45 @@
-import { AppLayout } from '@hilla/react-components/AppLayout.js';
-import React, { useEffect, useState } from 'react';
-import { ParticipantEndpoint } from 'Frontend/generated/endpoints';
-import ParticipantDTO from 'Frontend/generated/com/example/application/domain/ParticipantDTO'
-import ParticipantView from "Frontend/views/ParticipantView";
-import {LoginForm} from "@hilla/react-components/LoginForm";
-import Form from 'Frontend/components/Form';
+import { useRouteMetadata } from 'Frontend/util/routing';
+import React, { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import {AppLayout} from "@hilla/react-components/AppLayout";
+import {DrawerToggle} from "@hilla/react-components/DrawerToggle";
+import Placeholder from "Frontend/components/placeholder/Placeholder";
+import {Button} from "@hilla/react-components/Button";
+import {logout} from "@hilla/frontend";
 
-
-/*
-Make this the landing page with the login / signup options
-*/
+const navLinkClasses = ({ isActive }: any) => {
+    return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
+};
 
 export default function MainLayout() {
+    const currentTitle = useRouteMetadata()?.title ?? 'My App';
+    return (
 
-    const [data, setData] = useState<ParticipantDTO[]>([]);
-    useEffect(() => {
-        fetchData();
-    }, []);
-    const [showLogin, setShowLogin] = React.useState(true);
+        <AppLayout primarySection="drawer">
+            <div slot="drawer" className="flex flex-col justify-between h-full p-m">
+                <header className="flex flex-col gap-m">
+                    <h1 className="text-l m-0">My App</h1>
+                    <nav>
+                        <NavLink className={navLinkClasses} to="/">
+                            Participants
+                        </NavLink>
+                    </nav>
+                </header>
+            </div>
+            <div slot="navbar" className="flex gap-m items-center w-full">
+                <DrawerToggle aria-label="Menu toggle"></DrawerToggle>
+                <h2  className="text-l m-0 flex-grow">
+                    {currentTitle}
+                </h2>
+                <Button className="pr-m" onClick={() => logout({logoutUrl: "/"})}>
+                    Logout
+                </Button>
+            </div>
 
-
-    async function fetchData() {
-        try {
-            const response = await ParticipantEndpoint.findAll();
-             console.log("Response is ", response);
-            setData(response);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-  return (
-      <div>
-          <h1>Welcome to TechConnect!</h1>
-          <p>The app to connect tech mentors and mentees glsobally</p>
-
-          {showLogin ? <LoginForm /> : <Form />}
-
-          <button onClick={() => setShowLogin(!showLogin)}>
-              {showLogin ? "Need an account? Sign up!" : "Already have an account? Log in!"}
-          </button>
-          <AppLayout className="block h-full" primarySection="drawer">
-                <h1 className="text-l m-0">Tech Connect</h1>
-              {data.map((item) => (
-                  <div key={item.id}>
-                      <h2>{item.name}</h2>
-                      <p>{item.email}</p>
-                  </div>
-              ))}
-          </AppLayout>
-
-      </div>
-  );
+            <Suspense fallback={<Placeholder />}>
+                <Outlet />
+            </Suspense>
+        </AppLayout>
+    );
 }
+

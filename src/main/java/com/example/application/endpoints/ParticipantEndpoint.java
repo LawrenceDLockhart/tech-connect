@@ -15,7 +15,6 @@ import java.util.List;
 public class ParticipantEndpoint {
 
     private ParticipantRepository participantRepository;
-
     private ParticipantService participantService;
     public ParticipantEndpoint(ParticipantRepository participantRepository, ParticipantService participantService) {
         this.participantRepository = participantRepository;

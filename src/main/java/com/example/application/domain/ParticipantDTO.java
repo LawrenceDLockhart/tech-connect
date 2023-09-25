@@ -7,7 +7,7 @@ import java.util.Optional;
 public class ParticipantDTO {
     @GeneratedValue
     private Long id;
-    private String name;
+    private String userName;
     private String email;
     private Optional<Technology> technology;
     public enum Technology {
@@ -24,12 +24,12 @@ public class ParticipantDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
@@ -52,7 +52,7 @@ public class ParticipantDTO {
     public ParticipantDTO convertToDTO(Participant participant) {
         ParticipantDTO dto = new ParticipantDTO();
         dto.setId(participant.getId());
-        dto.setName(participant.getName());
+        dto.setUserName(participant.getUserName());
         dto.setEmail(participant.getEmail());
         return dto;
     }
