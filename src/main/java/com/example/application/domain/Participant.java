@@ -3,6 +3,8 @@ package com.example.application.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,8 +17,10 @@ public class Participant {
     private String userName;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Technology technology;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "participant_technologies", joinColumns = @JoinColumn(name = "participant_id"))
+    @Column(name = "technology")
+    List<String> technologies = new ArrayList<String>();
     @ManyToOne // Many mentees can have one mentor
     @JoinColumn(name = "mentor_id")
     private Participant mentor;
@@ -24,10 +28,6 @@ public class Participant {
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
     private List<Participant> mentees;
     public Participant() {
-    }
-    public Participant(String email, Technology technology) {
-        this.email = email;
-        this.technology = technology;
     }
     public Participant(String userName, String password, String email) {
         this.userName = userName;
@@ -75,12 +75,12 @@ public class Participant {
         this.mentees = mentees;
     }
 
-    public Technology getTechnology() {
-        return technology;
+    public List<String> getTechnologies() {
+        return technologies;
     }
 
-    public void setTechnology(Technology technology) {
-        this.technology = technology;
+    public void setTechnologies(List<String> technologies) {
+        this.technologies = technologies;
     }
 
     public String getPassword() {
