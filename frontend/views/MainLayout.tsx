@@ -10,6 +10,9 @@ import TechnologySelection, {Technologies} from "Frontend/components/TechnologyS
 import MentorMenteeSelection, {MentorMentee} from "Frontend/components/MentorMenteeSelection";
 import { CheckboxGroup } from '@hilla/react-components/CheckboxGroup.js';
 import { Checkbox } from '@hilla/react-components/Checkbox.js';
+import ParticipantModel from "Frontend/generated/com/example/application/domain/ParticipantModel";
+import {useForm} from "@hilla/react-form";
+import {ParticipantEndpoint} from "Frontend/generated/endpoints";
 
 const navLinkClasses = ({ isActive }: any) => {
     return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
@@ -19,7 +22,12 @@ export default function MainLayout() {
     const currentTitle = useRouteMetadata()?.title ?? 'My App';
     const [mentorMenteeChoice, setMentorMenteeChoice] = useState<MentorMentee | null>(null);
     const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([Technologies.JAVA, Technologies.JAVASCRIPT]);
-
+    const {model, field, read, submit} = useForm(ParticipantModel,  {
+        onSubmit: async (participant) => {
+            console.log(model);
+            ParticipantEndpoint.save(participant);
+        }
+    } )
     const handleSubmit = () => {
         // Handle saving the data to the backend or context.
         console.log(selectedTechnologies, mentorMenteeChoice);
@@ -38,7 +46,7 @@ export default function MainLayout() {
 
                     <div className="mt-4">
                         <h3>Select Technologies</h3>
-                        <TechnologySelection onChange={setSelectedTechnologies} />
+                        {/*<TechnologySelection onChange={setSelectedTechnologies} />*/}
                         <CheckboxGroup
                             label="Select Technologies"
                             value={selectedTechnologies}

@@ -3,6 +3,8 @@ package com.example.application.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,9 @@ public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min=3, max=50)
     private String userName;
+    @Email
     private String email;
     private String password;
     @ElementCollection(fetch = FetchType.EAGER)
@@ -89,6 +93,10 @@ public class Participant {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTechnology(int index) {
+        return technologies.get(index);
     }
 
     public enum Technology {

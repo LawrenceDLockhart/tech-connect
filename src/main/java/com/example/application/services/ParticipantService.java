@@ -25,11 +25,11 @@ public class ParticipantService {
         participant.setPassword(passwordEncoder.encode(participant.getPassword()));
         repository.save(participant);
     }
-    public void updateTechnology(Long participantId, Participant.Technology technology) {
+    public void updateTechnology(Long participantId, List<String> technologies) {
         Optional<Participant> participantOptional = repository.findById(participantId);
         if (participantOptional.isPresent()) {
             Participant participant = participantOptional.get();
-            participant.setTechnology(technology);
+            participant.setTechnologies(technologies);
             repository.save(participant);
         } else {
             System.out.println("cannot connect technolgoy to "+ participantId );
@@ -38,11 +38,11 @@ public class ParticipantService {
     }
     // Service method to connect a mentor to a mentee
     @Transactional
-    public void connectMentorAndMentee(Long mentorId) {
+    public void connectMentorAndMentee(Long mentorId, int index) {
         Optional<Participant> mentorOptional = repository.findById(mentorId);
         if (mentorOptional.isPresent()) {
             Participant mentor = mentorOptional.get();
-            List<Participant> potentialMentees = repository.findAllByTechnologyAndMentorIsNull(mentor.getTechnology());
+            List<Participant> potentialMentees = repository.findAllByTechnologiesAndMentorIsNull(mentor.getTechnology(index));
             if (!potentialMentees.isEmpty()) {
                 Participant mentee = potentialMentees.get(0);
                 mentee.setMentor(mentor);

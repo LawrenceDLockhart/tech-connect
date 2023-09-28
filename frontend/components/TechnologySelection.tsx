@@ -4,7 +4,6 @@ export enum Technologies {
     JAVA = 'Java',
     PYTHON = 'Python',
     JAVASCRIPT = 'JavaScript',
-    // ... (other technologies from your enum)
 }
 
 const TechnologySelection: React.FC<{ onChange: (selected: Technologies[]) => void }> = ({ onChange }) => {
