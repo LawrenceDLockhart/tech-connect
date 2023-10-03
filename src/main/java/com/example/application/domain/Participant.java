@@ -1,11 +1,10 @@
 package com.example.application.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min=3, max=50)
+//    @Size(min=3, max=50)
     private String userName;
     @Email
     private String email;
@@ -25,12 +24,14 @@ public class Participant {
     @CollectionTable(name = "participant_technologies", joinColumns = @JoinColumn(name = "participant_id"))
     @Column(name = "technology")
     List<String> technologies = new ArrayList<String>();
+
+    @JsonBackReference
     @ManyToOne // Many mentees can have one mentor
     @JoinColumn(name = "mentor_id")
     private Participant mentor;
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
-    private List<Participant> mentees;
+    private List<Participant> mentees = new ArrayList<Participant>();
     public Participant() {
     }
     public Participant(String userName, String password, String email) {
@@ -97,6 +98,14 @@ public class Participant {
 
     public String getTechnology(int index) {
         return technologies.get(index);
+    }
+
+    @Override
+    public String toString() {
+        return "Participant{" +
+                "userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
     public enum Technology {

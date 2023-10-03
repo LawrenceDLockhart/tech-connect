@@ -26,6 +26,7 @@ public class ParticipantEndpoint {
     }
 
     public Participant save(Participant participant) {
+        System.out.println("Saving participant" + participant.toString());
         return participantRepository.save(participant);
     }
 

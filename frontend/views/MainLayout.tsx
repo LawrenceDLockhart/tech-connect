@@ -25,17 +25,11 @@ export default function MainLayout() {
     const {model, field, read, submit} = useForm(ParticipantModel,  {
         onSubmit: async (participant) => {
             console.log(model);
-            console.log(selectedTechnologies, mentorMenteeChoice);
+            console.log("Saving " + selectedTechnologies, mentorMenteeChoice);
+            console.log("Saving participant " + participant.userName);
             await ParticipantEndpoint.save(participant);
         }
     } )
-
-    /* shouldn't need anymore
-    const handleSubmit = () => {
-        // save the data to backend
-        console.log(selectedTechnologies, mentorMenteeChoice);
-    };
-     */
 
     return (
         <AppLayout primarySection="drawer">
