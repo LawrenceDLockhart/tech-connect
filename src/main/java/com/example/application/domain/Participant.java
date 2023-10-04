@@ -2,6 +2,7 @@ package com.example.application.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -9,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"mentor"})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties({"mentor"})
 public class Participant {
 
     @Id
@@ -29,9 +31,11 @@ public class Participant {
     @ManyToOne // Many mentees can have one mentor
     @JoinColumn(name = "mentor_id")
     private Participant mentor;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
-    private List<Participant> mentees = new ArrayList<Participant>();
+    private List<Participant> mentees = new ArrayList<>();
+    private boolean isMentor;
     public Participant() {
     }
     public Participant(String userName, String password, String email) {
@@ -100,12 +104,12 @@ public class Participant {
         return technologies.get(index);
     }
 
-    @Override
-    public String toString() {
-        return "Participant{" +
-                "userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public boolean getIsMentor() {
+        return isMentor;
+    }
+
+    public void setIsMentor(boolean isMentor) {
+        this.isMentor = isMentor;
     }
 
     public enum Technology {

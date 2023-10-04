@@ -27,6 +27,8 @@ export default function MainLayout() {
             console.log(model);
             console.log("Saving " + selectedTechnologies, mentorMenteeChoice);
             console.log("Saving participant " + participant.userName);
+            participant.isMentor = (mentorMenteeChoice === 'Mentor');
+            participant.technologies = selectedTechnologies;
             await ParticipantEndpoint.save(participant);
         }
     } )
