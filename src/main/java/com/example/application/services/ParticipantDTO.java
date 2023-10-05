@@ -2,6 +2,8 @@ package com.example.application.domain;
 
 import jakarta.persistence.GeneratedValue;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ParticipantDTO {
@@ -9,7 +11,7 @@ public class ParticipantDTO {
     private Long id;
     private String userName;
     private String email;
-    private Optional<Technology> technology;
+    List<String> technologies = new ArrayList<String>();
     public enum Technology {
         PYTHON,
         JAVA,
@@ -38,15 +40,6 @@ public class ParticipantDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Optional<Technology> getTechnology() {
-        technology = Optional.empty();
-        return technology;
-    }
-
-    public void setTechnology(Technology technology) {
-        this.technology = Optional.empty();
     }
 
     public ParticipantDTO convertToDTO(Participant participant) {
