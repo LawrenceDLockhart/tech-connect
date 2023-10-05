@@ -14,9 +14,9 @@ public class CreateParticipant implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if(participantService.findAll().isEmpty()) {
-            participantService.createParticipant(new Participant("user1", "password1", "user1@example.com"));
-            participantService.createParticipant(new Participant("user2", "password2", "user2@example.com"));
-            participantService.createParticipant(new Participant("user3", "password3", "user3@example.com"));
+            participantService.createParticipant(new Participant(1L,"user1", "password1", "user1@example.com"));
+            participantService.createParticipant(new Participant(2L,"user2", "password2", "user2@example.com"));
+            participantService.createParticipant(new Participant(3L,"user3", "password3", "user3@example.com"));
         }
     }
 }

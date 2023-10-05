@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {AppLayout} from "@hilla/react-components/AppLayout";
-import ParticipantDTO from "Frontend/generated/com/example/application/domain/ParticipantDTO";
-import {ParticipantEndpoint} from "Frontend/generated/endpoints";
+import {ParticipantService} from "Frontend/generated/endpoints";
 import Participant from "Frontend/generated/com/example/application/domain/Participant";
+import ParticipantDTO from "Frontend/generated/com/example/application/services/ParticipantDTO";
 
 const ParticipantView: React.FC = () => {
     const [participants, setParticipants] = useState<Participant[]>([]);
@@ -16,7 +15,7 @@ const ParticipantView: React.FC = () => {
 
     async function fetchData() {
         try {
-            const response = await ParticipantEndpoint.findAll();
+            const response = await ParticipantService.findAll();
             console.log("Response is ", response);
             setData(response);
         } catch (error) {

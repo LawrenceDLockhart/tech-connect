@@ -1,8 +1,6 @@
 package com.example.application.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -22,10 +20,10 @@ public class Participant {
     @Email
     private String email;
     private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "participant_technologies", joinColumns = @JoinColumn(name = "participant_id"))
-    @Column(name = "technology")
-    List<String> technologies = new ArrayList<String>();
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    List<Technology> technologies = new ArrayList<>();
 
     @JsonBackReference
     @ManyToOne // Many mentees can have one mentor
@@ -35,10 +33,11 @@ public class Participant {
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
     private List<Participant> mentees = new ArrayList<>();
-    private boolean isMentor;
+
     public Participant() {
     }
-    public Participant(String userName, String password, String email) {
+    public Participant(Long id, String userName, String password, String email) {
+        this.id = id;
         this.userName = userName;
         this.email = email;
         this.password = password;
@@ -84,11 +83,11 @@ public class Participant {
         this.mentees = mentees;
     }
 
-    public List<String> getTechnologies() {
+    public List<Technology> getTechnologies() {
         return technologies;
     }
 
-    public void setTechnologies(List<String> technologies) {
+    public void setTechnologies(List<Technology> technologies) {
         this.technologies = technologies;
     }
 
@@ -100,22 +99,8 @@ public class Participant {
         this.password = password;
     }
 
-    public String getTechnology(int index) {
-        return technologies.get(index);
-    }
-
-    public boolean getIsMentor() {
-        return isMentor;
-    }
-
-    public void setIsMentor(boolean isMentor) {
-        this.isMentor = isMentor;
-    }
-
-    public enum Technology {
-        PYTHON,
-        JAVA,
-        JAVASCRIPT
+    public boolean isMentor() {
+        return !getMentees().isEmpty();
     }
 
 }

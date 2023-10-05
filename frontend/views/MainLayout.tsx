@@ -6,13 +6,7 @@ import { DrawerToggle } from "@hilla/react-components/DrawerToggle";
 import Placeholder from "Frontend/components/placeholder/Placeholder";
 import { Button } from "@hilla/react-components/Button";
 import { logout } from "@hilla/frontend";
-import TechnologySelection, {Technologies} from "Frontend/components/TechnologySelection";
-import MentorMenteeSelection, {MentorMentee} from "Frontend/components/MentorMenteeSelection";
-import { CheckboxGroup } from '@hilla/react-components/CheckboxGroup.js';
-import { Checkbox } from '@hilla/react-components/Checkbox.js';
-import ParticipantModel from "Frontend/generated/com/example/application/domain/ParticipantModel";
-import {useForm} from "@hilla/react-form";
-import {ParticipantEndpoint} from "Frontend/generated/endpoints";
+
 
 const navLinkClasses = ({ isActive }: any) => {
     return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
@@ -20,18 +14,7 @@ const navLinkClasses = ({ isActive }: any) => {
 
 export default function MainLayout() {
     const currentTitle = useRouteMetadata()?.title ?? 'My App';
-    const [mentorMenteeChoice, setMentorMenteeChoice] = useState<MentorMentee | null>(null);
-    const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([Technologies.JAVA, Technologies.JAVASCRIPT]);
-    const {model, field, read, submit} = useForm(ParticipantModel,  {
-        onSubmit: async (participant) => {
-            console.log(model);
-            console.log("Saving " + selectedTechnologies, mentorMenteeChoice);
-            console.log("Saving participant " + participant.userName);
-            participant.isMentor = (mentorMenteeChoice === 'Mentor');
-            participant.technologies = selectedTechnologies;
-            await ParticipantEndpoint.save(participant);
-        }
-    } )
+
 
     return (
         <AppLayout primarySection="drawer">
@@ -40,29 +23,12 @@ export default function MainLayout() {
                     <h1 className="text-l m-0">My App</h1>
                     <nav>
                         <NavLink className={navLinkClasses} to="/">
+                            Settings
+                        </NavLink>
+                        <NavLink className={navLinkClasses} to="/participants">
                             Participants
                         </NavLink>
                     </nav>
-
-                    <div className="mt-4">
-                        <h3>Select Technologies</h3>
-                        {/*<TechnologySelection onChange={setSelectedTechnologies} />*/}
-                        <CheckboxGroup
-                            label="Select Technologies"
-                            value={selectedTechnologies}
-                            onValueChanged={(event) => setSelectedTechnologies(event.detail.value)}
-                            theme="vertical"
-                        >
-                            {Object.values(Technologies).map(tech => (
-                                <Checkbox key={tech} value={tech} label={tech} />
-                            ))}
-                        </CheckboxGroup>
-
-                        <h3 className="mt-2">Are you a Mentor or Mentee?</h3>
-                        <MentorMenteeSelection onChange={setMentorMenteeChoice} />
-                        <button className="mt-2" onClick={submit}>Save</button>
-                    </div>
-
                 </header>
             </div>
 
