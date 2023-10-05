@@ -5,10 +5,9 @@ import {ParticipantService} from "Frontend/generated/endpoints";
 import ParticipantDTOModel from "Frontend/generated/com/example/application/services/ParticipantDTOModel";
 import {TextField} from "@hilla/react-components/TextField.js";
 import {EmailField} from "@hilla/react-components/EmailField.js";
-import {RadioGroup} from "@hilla/react-components/RadioGroup";
 import {Button} from "@hilla/react-components/Button";
-import {RadioButton} from "@hilla/react-components/RadioButton";
-import Technology from "Frontend/generated/com/example/application/domain/Technology";
+import {Checkbox} from "@hilla/react-components/Checkbox";
+import {CheckboxGroup} from "@hilla/react-components/CheckboxGroup";
 
 const SettingsView = () => {
 
@@ -35,12 +34,19 @@ const SettingsView = () => {
                 <TextField label="User Name" {...field(model.userName)} />
                 <EmailField label="Email" {...field(model.email)} />
 
-                <RadioGroup {...field(model.technologies)}>
-                    {Object.values(Technology).map(technology => (
-                        <RadioButton key={technology} value={technology} label={technology} />
-                    ))}
-                </RadioGroup>
-
+                <CheckboxGroup
+                    label="Technologies"
+                >
+                    <Checkbox value="python" label="Python" {...field(model.technologies)}/>
+                    <Checkbox value="java" label="Java" {...field(model.technologies)}/>
+                    <Checkbox value="javascript" label="Javascript" {...field(model.technologies)}/>
+                </CheckboxGroup>
+                <CheckboxGroup
+                    label="MentorMentee"
+                >
+                    <Checkbox value="mentor" label="mentor" />
+                    <Checkbox value="mentee" label="mentee" />
+                </CheckboxGroup>
                 <Button onClick={submit} theme="primary">Save</Button>
             </div>
         </div>

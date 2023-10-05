@@ -103,8 +103,8 @@ public class ParticipantService {
     public ParticipantDTO save(ParticipantDTO participantDTO) {
         Participant participant = convertToParticipant(participantDTO);
         Participant savedParticipant = repository.save(participant);
+        System.out.println("Saving participant " + participant);
         return convertToDTO(savedParticipant);
-
     }
 }
 
