@@ -1,0 +1,27 @@
+vaadin-grid::part(even-row-cell) {
+    background-color: #f9f9f9;
+}
+
+vaadin-grid::part(odd-row-cell) {
+    background-color: #ffffff;
+}
+
+vaadin-grid::part(cell) {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+vaadin-grid::part(header-cell) {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+vaadin-grid::part(header-cell) {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+vaadin-grid {
+    max-width: 1000px;
+    margin: auto;
+}
