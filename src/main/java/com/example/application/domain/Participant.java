@@ -99,8 +99,5 @@ public class Participant {
         this.password = password;
     }
 
-    public boolean isMentor() {
-        return !getMentees().isEmpty();
-    }
 
 }

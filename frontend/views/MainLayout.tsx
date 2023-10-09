@@ -7,14 +7,12 @@ import Placeholder from "Frontend/components/placeholder/Placeholder";
 import { Button } from "@hilla/react-components/Button";
 import { logout } from "@hilla/frontend";
 
-
 const navLinkClasses = ({ isActive }: any) => {
     return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
 };
 
 export default function MainLayout() {
     const currentTitle = useRouteMetadata()?.title ?? 'My App';
-
 
     return (
         <AppLayout primarySection="drawer">

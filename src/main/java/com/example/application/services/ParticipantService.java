@@ -92,11 +92,16 @@ public class ParticipantService {
         participant.setId(dto.getId());
         participant.setUserName(dto.getUserName());
         participant.setEmail(dto.getEmail());
+        participant.setTechnologies(dto.getTechnologies());
         return participant;
     }
 
     public List<ParticipantDTO> findAll() {
         List<Participant> participants = repository.findAll();
+        participants.forEach(participant -> {
+            System.out.println("Participant ID: " + participant.getId());
+            System.out.println("Technologies: " + participant.getTechnologies());  // log technologies here
+        });
         return participants.stream().map(this::convertToDTO).toList();
     }
 

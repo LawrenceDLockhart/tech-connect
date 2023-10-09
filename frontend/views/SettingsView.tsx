@@ -12,7 +12,7 @@ import {Checkbox} from "@hilla/react-components/Checkbox";
 import {CheckboxGroup} from "@hilla/react-components/CheckboxGroup";
 import {RadioGroup} from "@hilla/react-components/RadioGroup";
 import {RadioButton} from "@hilla/react-components/RadioButton";
-
+import Technology from "Frontend/generated/com/example/application/domain/Technology";
 
 const SettingsView = () => {
     const navigate = useNavigate();
@@ -40,13 +40,17 @@ const SettingsView = () => {
             <div className="flex flex-col gap-s items-start">
                 <TextField label="User Name" {...field(model.userName)} />
                 <EmailField label="Email" {...field(model.email)} />
-
                 <CheckboxGroup
                     label="Technologies"
                 >
                     <Checkbox value="python" label="Python" {...field(model.technologies)}/>
                     <Checkbox value="java" label="Java" {...field(model.technologies)}/>
                     <Checkbox value="javascript" label="Javascript" {...field(model.technologies)}/>
+                </CheckboxGroup>
+                <CheckboxGroup {...field(model.technologies)}>
+                    {Object.values(Technology).map(technology => (
+                        <RadioButton key={technology} value={technology} label={technology} />
+                    ))}
                 </CheckboxGroup>
                 <RadioGroup>
                     <RadioButton value="mentor" label="Mentor" />
