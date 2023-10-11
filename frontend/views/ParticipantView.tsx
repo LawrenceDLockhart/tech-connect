@@ -28,16 +28,11 @@ const ParticipantView: React.FC = () => {
     return (
         <div className="App mx-auto">
             <h1 className="text-l m-0 text-center">Mentor Mentee List</h1>
-                {/*{data.map((item) => (*/}
-                {/*    <div key={item.id}>*/}
-                {/*        <h2>{item.userName}</h2>*/}
-                {/*        <p>{item.email}</p>*/}
-                {/*    </div>*/}
-                {/*))}*/}
             <Grid items={data}>
                 <GridColumn header="User Name" path="userName" />
                 <GridColumn header="Email" path="email" />
                 <GridColumn header="Technologies" path="technologies" />
+                <GridColumn header="Mentor/Mentee" path="mentormentee" />
             </Grid>
         </div>
     );

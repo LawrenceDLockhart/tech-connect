@@ -3,7 +3,6 @@ package com.example.application.services;
 import com.example.application.domain.Participant;
 import com.example.application.domain.Technology;
 import com.example.application.repositories.ParticipantRepository;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.BrowserCallable;
 import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
@@ -11,11 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 @BrowserCallable
 @PermitAll
 @Service
@@ -42,43 +38,7 @@ public class ParticipantService {
                 .orElseThrow();
         return convertToDTO(participant);
     }
-//    public void updateTechnology(Long participantId, List<Technology> technologies) {
-//        Optional<Participant> participantOptional = repository.findById(participantId);
-//        if (participantOptional.isPresent()) {
-//            Participant participant = participantOptional.get();
-//            participant.setTechnologies(technologies);
-//            repository.save(participant);
-//        } else {
-//            System.out.println("cannot connect technolgoy to "+ participantId );
-//            // change above to display in browser
-//        }
-//    }
-    // Service method to connect a mentor to a mentee
-//    @Transactional
-//    public void connectMentorAndMentee(Long mentorId, int index) {
-//        Optional<Participant> mentorOptional = repository.findById(mentorId);
-//        if (mentorOptional.isPresent()) {
-//            Participant mentor = mentorOptional.get();
-//            List<Participant> potentialMentees = repository.findAllByTechnologiesAndMentorIsNull(mentor.getTechnology(index));
-//            if (!potentialMentees.isEmpty()) {
-//                Participant mentee = potentialMentees.get(0);
-//                mentee.setMentor(mentor);
-//
-//                if (mentor.getMentees() == null) {
-//                    mentor.setMentees(new ArrayList<>());
-//                }
-//
-//                mentor.getMentees().add(mentee);
-//
-//                repository.save(mentee);
-//                repository.save(mentor);
-//            } else {
-//                // Handle no available mentees
-//            }
-//        } else {
-//            // Handle mentor not found
-//        }
-//    }
+
     public ParticipantDTO convertToDTO(Participant participant){
         ParticipantDTO dto = new ParticipantDTO();
         dto.setId(participant.getId());
@@ -107,6 +67,9 @@ public class ParticipantService {
 
     public ParticipantDTO save(ParticipantDTO participantDTO) {
         Participant participant = convertToParticipant(participantDTO);
+        for (Technology tech : participantDTO.getTechnologies()) {
+            participant.getTechnologies().add(tech);
+        }
         Participant savedParticipant = repository.save(participant);
         System.out.println("Saving participant " + participant);
         return convertToDTO(savedParticipant);

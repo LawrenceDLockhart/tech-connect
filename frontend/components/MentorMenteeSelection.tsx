@@ -4,7 +4,6 @@ export enum MentorMentee {
     MENTOR = 'Mentor',
     MENTEE = 'Mentee'
 }
-
 const MentorMenteeSelection: React.FC<{ onChange: (choice: MentorMentee) => void }> = ({ onChange }) => {
     return (
         <div>
