@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonIgnoreProperties({"mentor"})
 public class Participant {
 
     @Id
@@ -33,6 +31,8 @@ public class Participant {
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
     private List<Participant> mentees = new ArrayList<>();
+    private String mentorOrMentee = "not set";
+
 
     public Participant() {
     }
@@ -99,5 +99,11 @@ public class Participant {
         this.password = password;
     }
 
+    public String getMentorOrMentee() {
+        return mentorOrMentee;
+    }
 
+    public void setMentorOrMentee(String mentorOrMentee) {
+        this.mentorOrMentee = mentorOrMentee;
+    }
 }

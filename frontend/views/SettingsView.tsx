@@ -42,9 +42,9 @@ const SettingsView = () => {
                     <Checkbox value={Technology.JAVA} label="Java" {...field(model.technologies)}/>
                     <Checkbox value={Technology.JAVASCRIPT} label="Javascript" {...field(model.technologies)}/>
                 </CheckboxGroup>
-                <RadioGroup>
+                <RadioGroup {...field(model.mentorOrMentee)} label="I am a:">
                     <RadioButton value="mentor" label="Mentor" />
-                    <RadioButton value="mentee" label="Mentee" />
+                   <RadioButton value="mentee" label="Mentee" />
                 </RadioGroup>
                 <Button onClick={submit} theme="primary">Save</Button>
             </div>

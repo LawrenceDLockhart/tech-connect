@@ -45,6 +45,7 @@ public class ParticipantService {
         dto.setUserName(participant.getUserName());
         dto.setEmail(participant.getEmail());
         dto.setTechnologies(participant.getTechnologies());
+        dto.setMentorOrMentee(participant.getMentorOrMentee());
         return dto;
     }
     public Participant convertToParticipant(ParticipantDTO dto){
@@ -53,6 +54,7 @@ public class ParticipantService {
         participant.setUserName(dto.getUserName());
         participant.setEmail(dto.getEmail());
         participant.setTechnologies(dto.getTechnologies());
+        participant.setMentorOrMentee(dto.getMentorOrMentee());
         return participant;
     }
 
@@ -60,7 +62,8 @@ public class ParticipantService {
         List<Participant> participants = repository.findAll();
         participants.forEach(participant -> {
             System.out.println("Participant ID: " + participant.getId());
-            System.out.println("Technologies: " + participant.getTechnologies());  // log technologies here
+            System.out.println("Technologies: " + participant.getTechnologies());
+            System.out.println("Mentor/Mentee choice: " + participant.getMentorOrMentee());// log technologies here
         });
         return participants.stream().map(this::convertToDTO).toList();
     }
