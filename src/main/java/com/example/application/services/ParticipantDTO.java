@@ -1,17 +1,11 @@
 package com.example.application.services;
 
-import com.example.application.domain.Participant;
-import com.example.application.domain.Technology;
-import jakarta.persistence.GeneratedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ParticipantDTO {
     private Long id;
     private String userName;
     private String email;
-    List<Technology> technologies = new ArrayList<>();
+    private String technologies="None selected";
     private String mentorOrMentee = "Not set";
 
 
@@ -39,11 +33,11 @@ public class ParticipantDTO {
         this.email = email;
     }
 
-    public List<Technology> getTechnologies() {
+    public String getTechnologies() {
         return technologies;
     }
 
-    public void setTechnologies(List<Technology> technologies) {
+    public void setTechnologies(String technologies) {
         this.technologies = technologies;
     }
 

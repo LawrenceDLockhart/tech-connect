@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ParticipantRepository extends JpaRepository<Participant, Long> {
-    @Query("SELECT p FROM Participant p WHERE :technology MEMBER OF p.technologies AND p.mentor IS NULL")
+    @Query("SELECT p FROM Participant p WHERE p.technologies = :technology AND p.mentor IS NULL")
 
     List<Participant> findAllByTechnologiesAndMentorIsNull(String technology);
     Optional<Participant> findByUserName(String userName);

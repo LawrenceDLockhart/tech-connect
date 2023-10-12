@@ -20,10 +20,7 @@ public class Participant {
     @Email
     private String email;
     private String password;
-
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    List<Technology> technologies = new ArrayList<>();
+    private String technologies = "None selected";
 
     @JsonBackReference
     @ManyToOne // Many mentees can have one mentor
@@ -92,11 +89,11 @@ public class Participant {
         this.mentees = mentees;
     }
 
-    public List<Technology> getTechnologies() {
+    public String getTechnologies() {
         return technologies;
     }
 
-    public void setTechnologies(List<Technology> technologies) {
+    public void setTechnologies(String technologies) {
         this.technologies = technologies;
     }
 
