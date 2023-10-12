@@ -5,8 +5,6 @@ A
 frontend/index.ts,7/d/7d20e538ee502847fef696fce7e653c2221df044
 f
 6src/main/java/com/example/application/Application.java,4/2/4232496f9fd516adce7df95818a1130bb3489908
-q
-Asrc/main/java/com/example/application/endpoints/package-info.java,d/6/d6bbc6fb26a45ecd399553839aed383ec6a60709
 C
 frontend/index.html,a/1/a12b0e66474192f8cb9a2db83f26413a588dec1d
 C
@@ -27,12 +25,8 @@ R
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
-x
-Hsrc/main/java/com/example/application/endpoints/ParticipantEndpoint.java,2/2/226f39a434b026463b1c060b8886791ae9e0bb2a
 }
 Msrc/main/java/com/example/application/repositories/ParticipantRepository.java,8/4/8413b01176d182d8042d77a50379c86c0b133218
-p
-@src/main/java/com/example/application/domain/ParticipantDTO.java,0/f/0f1363e2825ebe8a8d069c02b5d2021c27f4d22a
 m
 =src/main/java/com/example/application/domain/Participant.java,4/5/454d719d63a263179f3c0bc7f21c99bd86d72f8e
 v
@@ -51,5 +45,9 @@ Esrc/main/java/com/example/application/services/CreateParticipant.java,6/d/6d55
 -frontend/components/MentorMenteeSelection.tsx,b/a/bac6964df2f4854517e9192e8c02c0c2d737b399
 L
 frontend/components/Form.tsx,e/0/e04af479dae0eb8bf5e18f3da2082f232bcd59c2
-[
-+frontend/components/TechnologySelection.tsx,d/c/dcb3079b981675eee5de3df66746600f4a4e9c40
+r
+Bsrc/main/java/com/example/application/services/ParticipantDTO.java,6/6/6699e03d1ed8f81d66f5dcbcf3f8eaef01bda68f
+l
+<src/main/java/com/example/application/domain/Technology.java,0/e/0ecf5622257f039f72c307e26fd37845df754991
+O
+frontend/views/SettingsView.tsx,4/a/4abc4da92e00bc633913a89cd80d2821dd743df0

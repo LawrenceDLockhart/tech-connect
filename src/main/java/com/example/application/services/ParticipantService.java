@@ -7,6 +7,7 @@ import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -32,48 +33,22 @@ public class ParticipantService {
 
     public ParticipantDTO getLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        // Check if authentication object is null
+        if (authentication == null) {
+            throw new IllegalStateException("No authentication available.");
+        }
         String currentPrincipalName = authentication.getName();
+        // Check if principal name is empty or null
+        if (currentPrincipalName == null || currentPrincipalName.isEmpty()) {
+            throw new IllegalStateException("Principal name is empty.");
+        }
+        // Find the participant, throw an exception if not found
         Participant participant = repository.findByUserName(currentPrincipalName)
-                .orElseThrow();
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        // Assume that convertToDTO checks for null and handles it appropriately
         return convertToDTO(participant);
     }
-//    public void updateTechnology(Long participantId, List<Technology> technologies) {
-//        Optional<Participant> participantOptional = repository.findById(participantId);
-//        if (participantOptional.isPresent()) {
-//            Participant participant = participantOptional.get();
-//            participant.setTechnologies(technologies);
-//            repository.save(participant);
-//        } else {
-//            System.out.println("cannot connect technolgoy to "+ participantId );
-//            // change above to display in browser
-//        }
-//    }
-    // Service method to connect a mentor to a mentee
-//    @Transactional
-//    public void connectMentorAndMentee(Long mentorId, int index) {
-//        Optional<Participant> mentorOptional = repository.findById(mentorId);
-//        if (mentorOptional.isPresent()) {
-//            Participant mentor = mentorOptional.get();
-//            List<Participant> potentialMentees = repository.findAllByTechnologiesAndMentorIsNull(mentor.getTechnology(index));
-//            if (!potentialMentees.isEmpty()) {
-//                Participant mentee = potentialMentees.get(0);
-//                mentee.setMentor(mentor);
-//
-//                if (mentor.getMentees() == null) {
-//                    mentor.setMentees(new ArrayList<>());
-//                }
-//
-//                mentor.getMentees().add(mentee);
-//
-//                repository.save(mentee);
-//                repository.save(mentor);
-//            } else {
-//                // Handle no available mentees
-//            }
-//        } else {
-//            // Handle mentor not found
-//        }
-//    }
+    
     public ParticipantDTO convertToDTO(Participant participant){
         ParticipantDTO dto = new ParticipantDTO();
         dto.setId(participant.getId());
