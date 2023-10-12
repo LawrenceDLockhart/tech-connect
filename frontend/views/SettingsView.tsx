@@ -52,7 +52,7 @@ const SettingsView = () => {
                         <RadioButton key={technology} value={technology} label={technology} />
                     ))}
                 </CheckboxGroup>
-                <RadioGroup>
+                <RadioGroup label="Role" {...field(model.mentorOrMentee)}>
                     <RadioButton value="mentor" label="Mentor" />
                     <RadioButton value="mentee" label="Mentee" />
                 </RadioGroup>

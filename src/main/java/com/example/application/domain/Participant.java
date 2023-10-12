@@ -33,6 +33,15 @@ public class Participant {
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
     private List<Participant> mentees = new ArrayList<>();
+    private String mentorOrMentee = "Not set";
+    public String getMentorOrMentee() {
+        return mentorOrMentee;
+    }
+
+    public void setMentorOrMentee(String mentorOrMentee) {
+        this.mentorOrMentee = mentorOrMentee;
+    }
+
 
     public Participant() {
     }

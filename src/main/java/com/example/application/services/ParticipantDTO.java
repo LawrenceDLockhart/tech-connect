@@ -12,6 +12,8 @@ public class ParticipantDTO {
     private String userName;
     private String email;
     List<Technology> technologies = new ArrayList<>();
+    private String mentorOrMentee = "Not set";
+
 
     public Long getId() {
         return id;
@@ -43,5 +45,13 @@ public class ParticipantDTO {
 
     public void setTechnologies(List<Technology> technologies) {
         this.technologies = technologies;
+    }
+
+    public String getMentorOrMentee() {
+        return mentorOrMentee;
+    }
+
+    public void setMentorOrMentee(String mentorOrMentee) {
+        this.mentorOrMentee = mentorOrMentee;
     }
 }

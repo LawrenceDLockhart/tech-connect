@@ -85,6 +85,7 @@ public class ParticipantService {
         dto.setUserName(participant.getUserName());
         dto.setEmail(participant.getEmail());
         dto.setTechnologies(participant.getTechnologies());
+        dto.setMentorOrMentee(participant.getMentorOrMentee());
         return dto;
     }
     public Participant convertToParticipant(ParticipantDTO dto){
@@ -93,6 +94,7 @@ public class ParticipantService {
         participant.setUserName(dto.getUserName());
         participant.setEmail(dto.getEmail());
         participant.setTechnologies(dto.getTechnologies());
+        participant.setMentorOrMentee(dto.getMentorOrMentee());
         return participant;
     }
 
