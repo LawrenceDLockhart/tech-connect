@@ -38,6 +38,7 @@ const ParticipantView: React.FC = () => {
                 <GridColumn header="User Name" path="userName" />
                 <GridColumn header="Email" path="email" />
                 <GridColumn header="Technologies" path="technologies" />
+                <GridColumn header="Mentor/Mentee" path="mentorOrMentee" />
             </Grid>
         </div>
     );
