@@ -48,7 +48,7 @@ public class ParticipantService {
         // Assume that convertToDTO checks for null and handles it appropriately
         return convertToDTO(participant);
     }
-    
+
     public ParticipantDTO convertToDTO(Participant participant){
         ParticipantDTO dto = new ParticipantDTO();
         dto.setId(participant.getId());

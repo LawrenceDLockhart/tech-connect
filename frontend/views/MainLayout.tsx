@@ -35,7 +35,7 @@ export default function MainLayout() {
                 <h2 className="text-l m-0 flex-grow">
                     {currentTitle}
                 </h2>
-                <Button className="pr-m" onClick={() => logout({ logoutUrl: "/" })}>
+                <Button className="pr-m" onClick={() => logout({ logoutUrl: "/login" })}>
                     Logout
                 </Button>
             </div>
