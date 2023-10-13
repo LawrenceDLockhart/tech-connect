@@ -1,15 +1,6 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.util.Arrays;
-import java.util.List;
-
-import com.example.application.domain.Participant;
-import com.example.application.domain.ParticipantDTO;
 import com.example.application.repositories.ParticipantRepository;
 import com.example.application.services.ParticipantService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;

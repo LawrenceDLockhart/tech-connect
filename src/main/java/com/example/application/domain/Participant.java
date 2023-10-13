@@ -1,34 +1,52 @@
 package com.example.application.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIgnoreProperties({"mentor"})
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties({"mentor"})
 public class Participant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+//    @Size(min=3, max=50)
+    private String userName;
+    @Email
     private String email;
-    @Enumerated(EnumType.STRING)
-    private Technology technology;
+    private String password;
+    private String technologies = "None selected";
+
+    @JsonBackReference
     @ManyToOne // Many mentees can have one mentor
     @JoinColumn(name = "mentor_id")
     private Participant mentor;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "mentor", cascade = CascadeType.ALL) // One mentor can have many mentees
-    private List<Participant> mentees;
+    private List<Participant> mentees = new ArrayList<>();
+    private String mentorOrMentee = "Not set";
+    public String getMentorOrMentee() {
+        return mentorOrMentee;
+    }
+
+    public void setMentorOrMentee(String mentorOrMentee) {
+        this.mentorOrMentee = mentorOrMentee;
+    }
+
+
     public Participant() {
     }
-    public Participant(String email, Technology technology) {
+    public Participant(Long id, String userName, String password, String email) {
+        this.id = id;
+        this.userName = userName;
         this.email = email;
-        this.technology = technology;
+        this.password = password;
     }
     // Getters and Setters
     public Long getId() {
@@ -39,12 +57,12 @@ public class Participant {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
@@ -71,18 +89,21 @@ public class Participant {
         this.mentees = mentees;
     }
 
-    public Technology getTechnology() {
-        return technology;
+    public String getTechnologies() {
+        return technologies;
     }
 
-    public void setTechnology(Technology technology) {
-        this.technology = technology;
+    public void setTechnologies(String technologies) {
+        this.technologies = technologies;
     }
 
-    public enum Technology {
-        PYTHON,
-        JAVA,
-        JAVASCRIPT
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
 }

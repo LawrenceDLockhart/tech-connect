@@ -1,56 +1,40 @@
 import React, { useState, useEffect } from 'react';
-
-interface Participant {
-    id: number;
-    name: string;
-    email: string;
-    mentorId: number | null;
-    technology: string;
-}
+import {ParticipantService} from "Frontend/generated/endpoints";
+import Participant from "Frontend/generated/com/example/application/domain/Participant";
+import ParticipantDTO from "Frontend/generated/com/example/application/services/ParticipantDTO";
+import {GridColumn} from "@hilla/react-components/GridColumn";
+import {Grid} from "@hilla/react-components/Grid";
+import '/styles.css';
 
 const ParticipantView: React.FC = () => {
     const [participants, setParticipants] = useState<Participant[]>([]);
 
+    const [data, setData] = useState<ParticipantDTO[]>([]);
     useEffect(() => {
-        fetch("http://localhost:8080/")
-            .then((res) => res.json())
-            .then((data) => setParticipants(data))
-            .catch((error) => console.log("Fetching participants failed: ", error));
+        fetchData();
     }, []);
+    const [showLogin, setShowLogin] = React.useState(true);
+    const gridRef = React.useRef<any>(null);
 
-    const mentors = participants.filter((participant) => participant.mentorId === null);
-    const mentees = participants.filter((participant) => participant.mentorId !== null);
-
+    async function fetchData() {
+        try {
+            const response = await ParticipantService.findAll();
+            console.log("Response is ", response);
+            setData(response);
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <div className="App mx-auto">
-            <h1>Mentor and Mentee List</h1>
+            <h1 className="text-l m-0 text-center">Mentor Mentee List</h1>
 
-            <div className="d-flex" >
-
-                <ul>
-
-                    {mentors.map((mentor) => (
-
-                        <li key={mentor.id}>
-                            <h2>Mentors</h2>
-                            {mentor.name} ({mentor.email}) - Technology: {mentor.technology}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div>
-
-                <ul>
-
-                    {mentees.map((mentee) => (
-                        <li key={mentee.id}>
-                            <h2>Mentees</h2>
-                            {mentee.name} ({mentee.email}) - Technology: {mentee.technology}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <Grid items={data}>
+                <GridColumn header="User Name" path="userName" />
+                <GridColumn header="Email" path="email" />
+                <GridColumn header="Technologies" path="technologies" />
+                <GridColumn header="Mentor/Mentee" path="mentorOrMentee" />
+            </Grid>
         </div>
     );
 }
