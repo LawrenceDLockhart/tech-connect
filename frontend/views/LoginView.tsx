@@ -1,5 +1,5 @@
 import {LoginForm} from "@hilla/react-components/LoginForm.js";
-
+import '/styles.css';
 export function LoginView() {
 
     return(

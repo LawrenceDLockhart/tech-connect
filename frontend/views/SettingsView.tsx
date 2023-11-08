@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useForm} from "@hilla/react-form";
 import {useNavigate} from "react-router-dom";
-
+import '/styles.css';
 import {ParticipantService} from "Frontend/generated/endpoints";
 import ParticipantDTOModel from "Frontend/generated/com/example/application/services/ParticipantDTOModel";
 import {TextField} from "@hilla/react-components/TextField.js";

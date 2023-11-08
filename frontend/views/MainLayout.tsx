@@ -6,7 +6,7 @@ import { DrawerToggle } from "@hilla/react-components/DrawerToggle";
 import Placeholder from "Frontend/components/placeholder/Placeholder";
 import { Button } from "@hilla/react-components/Button";
 import { logout } from "@hilla/frontend";
-
+import '/styles.css';
 const navLinkClasses = ({ isActive }: any) => {
     return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
 };

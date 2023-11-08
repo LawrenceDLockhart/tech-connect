@@ -1,0 +1,33 @@
+html {
+    --lumo-primary-color: green;
+    --lumo-primary-text-color: white;
+    --lumo-secondary-text-color: white;
+    --lumo-text-color: white;
+    --lumo-body-text-color: white;
+    --lumo-background-color: black;
+    --lumo-base-color: black;
+    --lumo-border-color:#E1E4E8;
+    font-weight: bold;
+    --lumo-font-family: Roboto;
+}
+vaadin-main-layout {
+    color: white;
+    text-emphasis-color: white;
+    --lumo-primary-text-color: white;
+}
+vaadin-navlink {
+    color: white;
+}
+h1 {
+    color: white;
+}
+vaadin-grid {
+    color: darkgray;
+}
+vaadin-text-field::part(input-field) {
+     border: 1px solid darkgreen;
+ }
+
+vaadin-text-field[focused]::part(input-field) {
+    border-color: blue;
+}

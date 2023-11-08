@@ -41,6 +41,7 @@
     "rollup-plugin-visualizer": "5.9.0",
     "strip-css-comments": "5.0.0",
     "transform-ast": "2.4.4",
+    "ts-node": "^10.9.1",
     "typescript": "5.0.4",
     "vite": "4.3.9",
     "vite-plugin-checker": "0.5.5",
@@ -112,6 +113,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "634bdc7cb870d61f7bf3a005b4df9388fd52eae330710903b6610cd14f6b7a1b"
+    "hash": "0d92a8a5dc5de104d78171441fc24497e5ed8d000cc8f6656130198ffdc22f81"
   }
 }
